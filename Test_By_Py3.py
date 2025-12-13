@@ -1,20 +1,18 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-import os
-import math
+class People:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def rname(self):
+        return f'{self.name}'
+    def rage(self):
+        return f'{self.age}'
 
-browser = webdriver.Chrome()
-link = "https://suninjuly.github.io/file_input.html"
-browser.get(link)
+    def test(self):
+        name = self.rname()
+        age = self.rage()
+        return f'{name}, {age}'
 
-dir = os.getcwd()
+ivan = People("Ваня", 14)
 
-file_path = os.path.join(dir, 'Sasha_jopa.txt')
-
-file_str = str(file_path)
-
-print(os.path.isfile(file_str))
-print(file_str)
-
-send = browser.find_element(By.CSS_SELECTOR, "#file")
-send.send_keys(file_str)
+print(ivan.test())

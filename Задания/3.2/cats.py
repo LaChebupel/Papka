@@ -1,13 +1,13 @@
+class People:
+    def blyat(self, jopa):
+        for i in range(4):
+            print(f'{jopa} Blyat')
 
-class Cat:
-    def __init__(self, name):
-        self.name = name  # self сохраняет имя для этого котика
-        self.murka = "Мурка"
-    def meow(self):
-        return f"{self.name} говорит: Мяу-мяу!"  # self.name обращается к имени конкретного объекта
-# Создаем двух котиков
+    def suka(self):
+        jopa = "опа"
+        self.blyat(jopa)
 
-barsik = Cat("Барсик")
+vasya = People()
 
-print(murka.meow())   # Мурка говорит: Мяу-мяу!
-print(barsik.meow())  # Барсик говорит: Мяу-мяу!
+if __name__ == "__main__":
+    vasya.suka()

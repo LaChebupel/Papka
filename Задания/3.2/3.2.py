@@ -5,9 +5,10 @@ from selenium.webdriver.common.by import By
 
 class TestUniqueSelectors(unittest.TestCase):
 
-
+    def setUp(self):
+        self.driver = webdriver.Chrome()
     def fill_form(self, link):
-        browser = webdriver.Chrome()
+        browser = self.driver
         browser.implicitly_wait(5)
         browser.get(link)
 
@@ -34,7 +35,6 @@ class TestUniqueSelectors(unittest.TestCase):
 
     def tearDown(self):
         self.driver.close()
-
-    test = self.fill_form()
+        
 if __name__ == "__main__":
     unittest.main()
