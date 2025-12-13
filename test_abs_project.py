@@ -1,12 +1,5 @@
-import unittest
+def test_abs1():
+    assert abs(-23) == 24, "should be equal"
 
-class TestAbs(unittest.TestCase):
-    def test_abs1(self):
-        self.assertEqual(abs(-32), 32, "Should be equal")
-
-    def test_abs2(self):
-        self.assertEqual(abs(-34), 32, "Should be equal")
-
-if __name__ == "__main__":
-    unittest.main()
-        
+def test_abs2():
+    assert abs(-23) == 23, "should be equal"
