@@ -1,26 +1,35 @@
-import pytest
-
+import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
 
+def setUp(self):
+    self.driver = webdriver.Firefox()
 
-def test_exception1():
-    try:
-        browser = webdriver.Chrome()
-        browser.get("http://selenium1py.pythonanywhere.com/")
-        with pytest.raises(NoSuchElementException):
-            browser.find_element(By.CSS_SELECTOR, "button.btn")
-            pytest.fail("Не должно быть кнопки Отправить")
-    finally: 
-        browser.quit()
+def fill_form(self, link):
+    browser = self.driver
+    browser.implicitly_wait(5)
+    browser.get(link)
 
-def test_exception2():
-    try:
-        browser = webdriver.Chrome()
-        browser.get("http://selenium1py.pythonanywhere.com/")
-        with pytest.raises(NoSuchElementException):
-            browser.find_element(By.CSS_SELECTOR, "no_such_button.btn")
-            pytest.fail("Не должно быть кнопки Отправить")
-    finally: 
-        browser.quit()
+    browser.find_element(By.CSS_SELECTOR, '.first_block .first').send_keys('Kesa')
+    browser.find_element(By.CSS_SELECTOR, '.first_block .second').send_keys('Lisa')
+    browser.find_element(By.CSS_SELECTOR, '.third_class .third').send_keys('KL@google.com')
+
+    browser.find_element(By.CSS_SELECTOR, "button.btn").click()
+
+    welcome_text = browser.find_element(By.TAG_NAME, 'h1').text
+    return welcome_text
+
+def test_registration(self):
+    link = 'http://suninjuly.github.io/registration1.html'
+    registration_result = self.fill_form(link)
+
+    self.assertEqual("Congratulations! You have successfully registered!", registration_result)
+
+def test_registration_bug(self):
+    link = 'http://suninjuly.github.io/registration2.html'
+    registration_result = self.fill_form(link)
+
+    self.assertEqual("Congratulations! You have successfully registered!", registration_result)
+
+def tearDown(self):
+    self.driver.close()
