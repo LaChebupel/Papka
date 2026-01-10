@@ -1,8 +1,8 @@
 import pytest
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 class TestHuman():
-    def test_fuck(self, predict):
-        print(predict)
-        login = predict[0]
-        password = predict[1]
-        assert login == "opaa", "Неправильный логин"
+    def test_youtube(self, youtube):
+        print ("Hello")

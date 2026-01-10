@@ -1,8 +1,10 @@
 import pytest
-import time 
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 @pytest.fixture
-def predict():
-    login = f"test_{time.time()}@gmail.com"
-    password = f"{time.time()}"
-    return login, password
+def setup_module():
+    link = "www.youtube.com"
+    browser = webdriver.Chrome()
+    browser.get(link)
+    browser.implicitly_wait(5)

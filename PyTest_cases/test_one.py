@@ -27,6 +27,3 @@ class TestForm:
         link = "https://suninjuly.github.io/registration2.html"
         reg_rez = self.form(link)
         assert reg_rez == "Congratulations! You have successfully registered!"
-
-if __name__ == "__main__":
-    TestForm().test_one()
